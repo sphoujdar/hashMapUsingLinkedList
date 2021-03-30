@@ -1,6 +1,6 @@
 public interface INode<T> {
-    T getData();
-    void setData(T data);
+    T getKey();
+    void setKey(T key);
 
     INode getNext();
     void setNext(INode next);
