@@ -105,4 +105,33 @@ public class MyLinkedListTest {
                                && myLinkedList.searchNodeByData(48) == 4;
         Assert.assertTrue(testVariable);
     }
+
+    @Test
+    public void given3Nodes_insertOneNodeBeforeSpecificNode_AndCheckItWasInsertedInCorrectPosition(){
+        MyLinkedList<Integer> myLinkedList = new MyLinkedList<>();
+        INode<Integer> firstNode = new MyNode<>();
+        INode<Integer> secondNode = new MyNode<>();
+        INode<Integer> thirdNode = new MyNode<>();
+        INode<Integer> nodeToInsertInBetween = new MyNode<>();
+        firstNode.setData(56);
+        secondNode.setData(30);
+        thirdNode.setData(70);
+        nodeToInsertInBetween.setData(40);
+        myLinkedList.append(firstNode);
+        myLinkedList.append(secondNode);
+        myLinkedList.append(thirdNode);
+        myLinkedList.insert(nodeToInsertInBetween,30);
+        /*boolean testVariable = myLinkedList.searchNodeByData(56) == 0
+                && myLinkedList.searchNodeByData(30) == 1
+                && myLinkedList.searchNodeByData(40) == 2
+                && myLinkedList.searchNodeByData(70) == 3;
+
+        */
+        boolean testVariable2 = myLinkedList.getHead().getData().equals(56)
+                && myLinkedList.getHead().getNext().getData().equals(30)
+                && myLinkedList.getHead().getNext().getNext().getData().equals(40)
+                && myLinkedList.getTail().getData().equals(70);
+
+        Assert.assertTrue(testVariable2);
+    }
 }
