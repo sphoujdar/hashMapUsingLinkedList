@@ -41,4 +41,22 @@ public class MyLinkedListTest {
         Assert.assertTrue(testVariable);
     }
 
+    @Test
+    public void given3Nodes_RemoveHeadNodeOfLinkedList_AndCheckThatListIsInCorrectOrder(){
+        MyLinkedList<Integer> myLinkedList = new MyLinkedList<>();
+        MyNode<Integer> firstNode = new MyNode<>();
+        MyNode<Integer> secondNode = new MyNode<>();
+        MyNode<Integer> thirdNode = new MyNode<>();
+        firstNode.setData(56);
+        secondNode.setData(30);
+        thirdNode.setData(70);
+        myLinkedList.append(firstNode);
+        myLinkedList.append(secondNode);
+        myLinkedList.append(thirdNode);
+        myLinkedList.popHead();
+
+        boolean testVariable = myLinkedList.getHead().getData().equals(30)
+                && myLinkedList.getHead().getNext().getData().equals(70);
+        Assert.assertTrue(testVariable);
+    }
 }

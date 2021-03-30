@@ -43,7 +43,7 @@ public class MyLinkedList<T> {
         nodeToInsertInBetweenList.setNext(nodeAfterInsertedNode);
     }
 
-    public void printList() {
+    public void printList(){
         INode currentNode = this.head;
         System.out.print("Head->  ");
         while(currentNode.getNext() != null){
@@ -52,5 +52,9 @@ public class MyLinkedList<T> {
         }
         System.out.print(currentNode.getData());
         System.out.println("  <-Tail");
+    }
+
+    public void popHead() {
+        this.head = this.head.getNext();
     }
 }
