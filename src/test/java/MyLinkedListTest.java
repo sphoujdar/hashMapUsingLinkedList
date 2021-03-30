@@ -41,6 +41,4 @@ public class MyLinkedListTest {
         Assert.assertTrue(testVariable);
     }
 
-
-
 }

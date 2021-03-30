@@ -27,12 +27,10 @@ public class MyLinkedList<T> {
         if (this.head == null){
             this.head = nodeToAppend;
         }
-        if(this.tail == null){
-            this.tail = nodeToAppend;
-        }else{
+        if (this.tail != null) {
             this.tail.setNext(nodeToAppend);
-            this.tail = nodeToAppend;
         }
+        this.tail = nodeToAppend;
     }
 
     public void insert(INode<T> nodeToInsertInBetweenList , T previousNodeData) {
