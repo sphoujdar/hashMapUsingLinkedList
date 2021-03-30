@@ -34,17 +34,17 @@ public class MyLinkedList<T> {
     }
 
     public void insert(INode<T> nodeToInsertInBetweenList , T previousNodeData) {
-        INode currentNode = this.head;
+        INode<T> currentNode = this.head;
         while(!currentNode.getData().equals(previousNodeData)){
             currentNode = currentNode.getNext();
         }
-        INode nodeAfterInsertedNode = currentNode.getNext();
+        INode<T> nodeAfterInsertedNode = currentNode.getNext();
         currentNode.setNext(nodeToInsertInBetweenList);
         nodeToInsertInBetweenList.setNext(nodeAfterInsertedNode);
     }
 
     public void printList(){
-        INode currentNode = this.head;
+        INode<T> currentNode = this.head;
         System.out.print("Head->  ");
         while(currentNode.getNext() != null){
             System.out.print(currentNode.getData()+"->");
@@ -59,11 +59,21 @@ public class MyLinkedList<T> {
     }
 
     public void popTail() {
-        INode newTailNode = this.head;
+        INode<T> newTailNode = this.head;
         while(!newTailNode.getNext().equals(this.tail)){
             newTailNode = newTailNode.getNext();
         }
         newTailNode.setNext(null);
-        newTailNode = this.tail;
+        this.tail = newTailNode;
+    }
+
+    public int searchNodeByData(T searchData) {
+        INode<T> nodeToSearch = this.head;
+        int positionInLinkedList = 0;
+        while(!nodeToSearch.getData().equals(searchData)){
+            nodeToSearch = nodeToSearch.getNext();
+            positionInLinkedList++;
+        }
+        return positionInLinkedList;
     }
 }
