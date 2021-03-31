@@ -102,6 +102,7 @@ public class MyLinkedListTest {
                                && myLinkedList.searchNodeByKey(70) == 2
                                && myLinkedList.searchNodeByKey(26) == 3
                                && myLinkedList.searchNodeByKey(48) == 4;
+
         Assert.assertTrue(testVariable);
     }
 
@@ -116,22 +117,18 @@ public class MyLinkedListTest {
         secondNode.setKey(30);
         thirdNode.setKey(70);
         nodeToInsertInBetween.setKey(40);
+
         myLinkedList.append(firstNode);
         myLinkedList.append(secondNode);
         myLinkedList.append(thirdNode);
-        myLinkedList.insert(nodeToInsertInBetween,30);
-        /*boolean testVariable = myLinkedList.searchNodeByData(56) == 0
-                && myLinkedList.searchNodeByData(30) == 1
-                && myLinkedList.searchNodeByData(40) == 2
-                && myLinkedList.searchNodeByData(70) == 3;
 
-        */
-        boolean testVariable2 = myLinkedList.getHead().getKey().equals(56)
+        myLinkedList.insert(nodeToInsertInBetween,30);
+
+        boolean testVariable = myLinkedList.getHead().getKey().equals(56)
                 && myLinkedList.getHead().getNext().getKey().equals(30)
                 && myLinkedList.getHead().getNext().getNext().getKey().equals(40)
                 && myLinkedList.getTail().getKey().equals(70);
-
-        Assert.assertTrue(testVariable2);
+        Assert.assertTrue(testVariable);
     }
 
     @Test
@@ -145,6 +142,7 @@ public class MyLinkedListTest {
         secondNode.setKey(30);
         thirdNode.setKey(40);
         fourthNode.setKey(70);
+
         myLinkedList.append(firstNode);
         myLinkedList.append(secondNode);
         myLinkedList.append(thirdNode);
@@ -155,7 +153,6 @@ public class MyLinkedListTest {
                 && myLinkedList.getHead().getNext().getKey().equals(30)
                 && myLinkedList.getTail().getKey().equals(70)
                 && myLinkedList.getSize() == 3;
-
         Assert.assertTrue(testVariable);
     }
 
@@ -168,6 +165,7 @@ public class MyLinkedListTest {
         firstNode.setKey(56);
         secondNode.setKey(30);
         thirdNode.setKey(70);
+
         myLinkedList.add(firstNode);
         myLinkedList.add(secondNode);
         myLinkedList.add(thirdNode);
@@ -199,13 +197,12 @@ public class MyLinkedListTest {
                 && myOrderedLinkedList.getHead().getNext().getKey().equals(40)
                 && myOrderedLinkedList.getHead().getNext().getNext().getKey().equals(56)
                 && myOrderedLinkedList.getTail().getKey().equals(70);
-
         Assert.assertTrue(testVariable);
     }
 
     @Test
     public void given4ValuesForLinkedImplementedAsStack_AddAllValuesToStack_AndCheckIfTheyAreAddedCorrectly(){
-        StackAsLinkedList<Integer> myLinkedListStack = new StackAsLinkedList();
+        StackAsLinkedList<Integer> myLinkedListStack = new StackAsLinkedList<>();
         INode<Integer> firstNode = new MyNode<>();
         INode<Integer> secondNode = new MyNode<>();
         INode<Integer> thirdNode = new MyNode<>();
@@ -224,13 +221,12 @@ public class MyLinkedListTest {
                 && myLinkedListStack.getHead().getNext().getKey().equals(70)
                 && myLinkedListStack.getHead().getNext().getNext().getKey().equals(30)
                 && myLinkedListStack.getHead().getNext().getNext().getNext().getKey().equals(56);
-
         Assert.assertTrue(testVariable);
     }
 
     @Test
-    public void given3ValuesInLinkedListImplementedAsStack_PeakAndPopEachValue_AndCheckEachOperation(){
-        StackAsLinkedList<Integer> myLinkedListStack = new StackAsLinkedList<Integer>();
+    public void given3ValuesInLinkedListImplementedAsStack_PeakAndPopEachValue_AndCheckAfterEachOperation(){
+        StackAsLinkedList<Integer> myLinkedListStack = new StackAsLinkedList<>();
         INode<Integer> firstNode = new MyNode<>();
         INode<Integer> secondNode = new MyNode<>();
         INode<Integer> thirdNode = new MyNode<>();
@@ -249,11 +245,29 @@ public class MyLinkedListTest {
         boolean peakThirdValueTopOfStack = myLinkedListStack.peak() == 70;
         boolean popThirdValueTopOfStack = myLinkedListStack.pop().getKey() == 70;
         boolean popEmptyTopOfStack = myLinkedListStack.getHead() == null;
-
         boolean testVariable = peakFirstValueTopOfStack && peakSecondValueTopOfStack && peakThirdValueTopOfStack
                                && popFirstValueTopOfStack && popSecondValueTopOfStack && popThirdValueTopOfStack
                                && popEmptyTopOfStack;
+        Assert.assertTrue(testVariable);
+    }
 
+    @Test
+    public void given3Values_FormLinkedListImplementedAsQueue_AndCheckIfEnqueueOperationWorksCorrectly(){
+        QueueAsLinkedList<Integer> myLinkedListQueue = new QueueAsLinkedList<>();
+        INode<Integer> firstNode = new MyNode<>();
+        INode<Integer> secondNode = new MyNode<>();
+        INode<Integer> thirdNode = new MyNode<>();
+        firstNode.setKey(70);
+        secondNode.setKey(30);
+        thirdNode.setKey(56);
+
+        myLinkedListQueue.enqueue(firstNode);
+        myLinkedListQueue.enqueue(secondNode);
+        myLinkedListQueue.enqueue(thirdNode);
+
+        boolean testVariable = myLinkedListQueue.getHead().getKey() == 70
+                               && myLinkedListQueue.getHead().getNext().getKey() == 30
+                               && myLinkedListQueue.getHead().getNext().getNext().getKey() == 56;
         Assert.assertTrue(testVariable);
     }
 }

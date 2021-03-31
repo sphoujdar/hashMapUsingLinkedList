@@ -81,21 +81,22 @@ public class MyLinkedList<T> {
         return positionInLinkedList;
     }
 
-    public void deleteNodeByKey(T KeyToDelete) {
+    public void deleteNodeByKey(T keyToDelete) {
         INode<T> previousNode = null;
         INode<T> currentNode = this.head;
 
-        if(currentNode.getKey()==KeyToDelete){
+        if(currentNode.getKey()==keyToDelete){
             currentNode = currentNode.getNext();
             this.head=currentNode;
             return;
         }
-        while(currentNode.getKey()!=KeyToDelete){
+        while(currentNode.getKey()!=keyToDelete){
             previousNode = currentNode;
             currentNode = currentNode.getNext();
         }
-        if (currentNode.getNext()==null){
+        if (this.getTail()==currentNode){
             previousNode.setNext(null);
+            this.setTail(previousNode);
             return;
         }
         previousNode.setNext(currentNode.getNext());

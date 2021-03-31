@@ -1,23 +1,10 @@
-//I had to change below line from
-//public class MyNode<K> implements INode<K>,Comparable<K>
-//to
-//public class MyNode<K extends Comparable<K>> implements INode<K>
-//to make comparable override work
-//Why did I have to do do that?
-//Basic difference between "implements" and "extends"?
+//"Extends Comparable" and "Implements Comparable" usages and needs -
+//https://stackoverflow.com/questions/34553204/implementing-comparable-for-a-node-in-java
 //https://stackoverflow.com/questions/21544716/implementing-comparable-with-a-generic-class
 
 public class MyNode<K extends Comparable<K>> implements INode<K>{
-
-//    Why do all the references to class need to be INode here?
-//    As INode means that it can be of any class which implements INode
-//    that would mean that I can use any other class's variable which
-//    implements INode here. Is that true? What does that exactly mean
-//    if that is true?
-//    Why does it give compiler error if we use MyNode instead of INode?
-
     private K key;
-    private INode nextNode;
+    private INode<K> nextNode;
 
     public MyNode() {
         this.key = null;
@@ -35,28 +22,17 @@ public class MyNode<K extends Comparable<K>> implements INode<K>{
     }
 
     @Override
-    public INode getNext() {
+    public INode<K> getNext() {
         return this.nextNode;
     }
 
     @Override
-    public void setNext(INode passedNode) {
+    public void setNext(INode<K> passedNode) {
         this.nextNode = passedNode;
     }
 
     @Override
-    public int compareTo(INode<K> currentNode) {
-        if (this.getKey().equals(null) || currentNode.getKey().equals(null)){
-            return 0;
-        }
-        return this.getKey().compareTo(currentNode.getKey());
-    }
-
-    @Override
-    public int compareTo(K key) {
-        if (this.key == null || key == null){
-            return 0;
-        }
-        return this.key.compareTo(key);
+    public int compareTo(INode<K> nodeToCompare) {
+                return this.key.compareTo(nodeToCompare.getKey());
     }
 }
