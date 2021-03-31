@@ -202,4 +202,29 @@ public class MyLinkedListTest {
 
         Assert.assertTrue(testVariable);
     }
+
+    @Test
+    public void given4ValuesForLinkedImplementedAsStack_AddAllValuesToStack_AndCheckIfTheyAreAddedCorrectly(){
+        StackAsLinkedList<Integer> myLinkedListStack = new StackAsLinkedList();
+        INode<Integer> firstNode = new MyNode<>();
+        INode<Integer> secondNode = new MyNode<>();
+        INode<Integer> thirdNode = new MyNode<>();
+        INode<Integer> fourthNode = new MyNode<>();
+        firstNode.setKey(56);
+        secondNode.setKey(30);
+        thirdNode.setKey(40);
+        fourthNode.setKey(70);
+
+        myLinkedListStack.push(firstNode);
+        myLinkedListStack.push(secondNode);
+        myLinkedListStack.push(fourthNode);
+        myLinkedListStack.push(thirdNode);
+
+        boolean testVariable = myLinkedListStack.getHead().getKey().equals(40)
+                && myLinkedListStack.getHead().getNext().getKey().equals(70)
+                && myLinkedListStack.getHead().getNext().getNext().getKey().equals(30)
+                && myLinkedListStack.getHead().getNext().getNext().getNext().getKey().equals(56);
+
+        Assert.assertTrue(testVariable);
+    }
 }
