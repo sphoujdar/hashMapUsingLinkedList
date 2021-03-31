@@ -227,4 +227,33 @@ public class MyLinkedListTest {
 
         Assert.assertTrue(testVariable);
     }
+
+    @Test
+    public void given3ValuesInLinkedListImplementedAsStack_PeakAndPopEachValue_AndCheckEachOperation(){
+        StackAsLinkedList<Integer> myLinkedListStack = new StackAsLinkedList<Integer>();
+        INode<Integer> firstNode = new MyNode<>();
+        INode<Integer> secondNode = new MyNode<>();
+        INode<Integer> thirdNode = new MyNode<>();
+        firstNode.setKey(70);
+        secondNode.setKey(30);
+        thirdNode.setKey(56);
+
+        myLinkedListStack.push(firstNode);
+        myLinkedListStack.push(secondNode);
+        myLinkedListStack.push(thirdNode);
+
+        boolean peakFirstValueTopOfStack = myLinkedListStack.peak() == 56;
+        boolean popFirstValueTopOfStack = myLinkedListStack.pop().getKey() == 56;
+        boolean peakSecondValueTopOfStack = myLinkedListStack.peak() == 30;
+        boolean popSecondValueTopOfStack = myLinkedListStack.pop().getKey() == 30;
+        boolean peakThirdValueTopOfStack = myLinkedListStack.peak() == 70;
+        boolean popThirdValueTopOfStack = myLinkedListStack.pop().getKey() == 70;
+        boolean popEmptyTopOfStack = myLinkedListStack.getHead() == null;
+
+        boolean testVariable = peakFirstValueTopOfStack && peakSecondValueTopOfStack && peakThirdValueTopOfStack
+                               && popFirstValueTopOfStack && popSecondValueTopOfStack && popThirdValueTopOfStack
+                               && popEmptyTopOfStack;
+
+        Assert.assertTrue(testVariable);
+    }
 }
