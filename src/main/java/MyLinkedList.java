@@ -128,4 +128,8 @@ public class MyLinkedList<T> {
         }
         this.head = nodeToAddAtStart;
     }
+
+    public boolean isEmpty() {
+        return this.getHead() == null;
+    }
 }

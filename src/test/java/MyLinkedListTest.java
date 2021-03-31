@@ -270,4 +270,26 @@ public class MyLinkedListTest {
                                && myLinkedListQueue.getHead().getNext().getNext().getKey() == 56;
         Assert.assertTrue(testVariable);
     }
+
+    @Test
+    public void given3ValuesInLinkedListImplementedAsQueue_DequeueAllValues_AndCheckAfterEachOperation(){
+        QueueAsLinkedList<Integer> myLinkedListQueue = new QueueAsLinkedList<>();
+        INode<Integer> firstNode = new MyNode<>();
+        INode<Integer> secondNode = new MyNode<>();
+        INode<Integer> thirdNode = new MyNode<>();
+        firstNode.setKey(70);
+        secondNode.setKey(30);
+        thirdNode.setKey(56);
+        myLinkedListQueue.enqueue(firstNode);
+        myLinkedListQueue.enqueue(secondNode);
+        myLinkedListQueue.enqueue(thirdNode);
+
+        boolean firstDequeue = myLinkedListQueue.dequeue().getKey() == 70;
+        boolean secondDequeue = myLinkedListQueue.dequeue().getKey() == 30;
+        boolean thirdDequeue = myLinkedListQueue.dequeue().getKey() == 56;
+        boolean emptyCheckAfterThirdDequeue = myLinkedListQueue.isEmpty();
+
+        boolean testVariable = firstDequeue && secondDequeue && thirdDequeue && emptyCheckAfterThirdDequeue;
+        Assert.assertTrue(testVariable);
+    }
 }
