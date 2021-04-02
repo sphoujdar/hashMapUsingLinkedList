@@ -35,8 +35,21 @@ public class MyBinarySearchTree<K extends Comparable<K>> {
         }
     }
 
-    public boolean search(K key) {
-    return true;
+    public boolean searchByKey(K key) {
+        return searchByKey(this.rootNode , key);
+    }
+
+    public boolean searchByKey(MyBinaryNode<K> currentNode , K key){
+        if(currentNode == null){
+            return false;
+        }
+        if (currentNode.getKey().equals(key)){
+            return true;
+        }
+        if (currentNode.getKey().compareTo(key) > 0){
+            return searchByKey(currentNode.getLeftNode(), key);
+        }
+            return searchByKey(currentNode.getRightNode(), key);
     }
 
     public int getSize(){

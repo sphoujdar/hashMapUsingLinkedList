@@ -37,7 +37,6 @@ public class MyBinaryNode<K extends Comparable<K>> implements INode<K> {
     }
     //No Functionality , blank
 
-
     public MyBinaryNode<K> getLeftNode() {
         if (this.leftNode == null){
             return null;
