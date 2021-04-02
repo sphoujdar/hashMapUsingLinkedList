@@ -19,9 +19,6 @@ public class MyMapNodeList<K, V> {
     }
 
     public INode<K> get(K key) {
-        if(this.myLinkedList.getHead() == null){
-            return null;
-        }
         return this.myLinkedList.search(key);
     }
 
@@ -40,5 +37,9 @@ public class MyMapNodeList<K, V> {
         returnString.append(currentNode);
         returnString.append("  <-Tail");
         return returnString.toString();
+    }
+
+    public boolean isPresent(K searchKey) {
+        return this.myLinkedList.isPresent(searchKey);
     }
 }

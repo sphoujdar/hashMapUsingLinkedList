@@ -3,6 +3,15 @@ public class MyMapNode<K,V> implements INode<K> {
     V value;
     MyMapNode<K,V> next;
 
+    public MyMapNode() {
+    }
+
+    public MyMapNode(K key, V value, MyMapNode<K, V> next) {
+        this.key = key;
+        this.value = value;
+        this.next = next;
+    }
+
     @Override
     public K getKey() {
         return this.key;
