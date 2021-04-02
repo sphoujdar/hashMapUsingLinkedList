@@ -79,9 +79,7 @@ public class MyHashMapTest{
         }
 
         MyMapNode<String ,Integer> avoidableOccurrenceBeforeDelete = keyValueHashMap.get("avoidable");
-        System.out.println(keyValueHashMap);
         keyValueHashMap.remove("avoidable");
-        System.out.println(keyValueHashMap);
         boolean testVariable = avoidableOccurrenceBeforeDelete.getValue() == 1 &&
                                !keyValueHashMap.remove("avoidable");
         Assert.assertTrue(testVariable);
