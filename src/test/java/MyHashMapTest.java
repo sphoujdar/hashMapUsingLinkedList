@@ -111,4 +111,15 @@ public class MyHashMapTest{
                                !keyValueHashMap.isPresent("avoidable");
         Assert.assertTrue(testVariable);
     }
+
+    @Test
+    public void given2KeyValuePairs_CompareTheKeys_CheckIfYouGetCorrectCompareToFunctionOutput(){
+        MyMapNode<String ,Integer> nodeOne = new MyMapNode<>("1",2,null);
+        MyMapNode<String ,Integer> nodeTwo = new MyMapNode<>("2",2,null);
+        MyMapNode<String ,Integer> nodeThree = new MyMapNode<>("3",2,null);
+
+        Assert.assertEquals(-1,nodeOne.compareTo(nodeTwo));
+        Assert.assertEquals(0,nodeTwo.compareTo(nodeTwo));
+        Assert.assertEquals(1,nodeTwo.compareTo(nodeOne));
+    }
 }

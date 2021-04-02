@@ -1,4 +1,6 @@
-public class MyMapNode<K,V> implements INode<K> {
+//https://stackoverflow.com/questions/16761762/extending-comparable-in-a-generic-class
+//Now all classes which will use MyMapNode need to "<K extends Comparable<K>,V>"
+public class MyMapNode<K extends Comparable<K>,V> implements INode<K> {
     K key;
     V value;
     MyMapNode<K,V> next;
@@ -41,13 +43,15 @@ public class MyMapNode<K,V> implements INode<K> {
     }
 
     @Override
-    public int compareTo(INode<K> kiNode) {
-        //Function does nothing , not required for current UCs
-        return 0;
+    public String toString() {
+        return "[" + this.key.toString() + "-" + this.value.toString() + "]";
     }
 
     @Override
-    public String toString() {
-        return "[" + this.key.toString() + "-" + this.value.toString() + "]";
+    public int compareTo(INode<K> nodeToCompare) {
+//        System.out.println("Key:" + this.key);
+//        System.out.println("Int Value:" +  this.key);
+//        return 0;
+        return this.key.compareTo(nodeToCompare.getKey());
     }
 }

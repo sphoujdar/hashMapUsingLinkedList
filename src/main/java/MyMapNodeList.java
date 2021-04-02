@@ -1,4 +1,4 @@
-public class MyMapNodeList<K, V> {
+public class MyMapNodeList<K extends Comparable<K>, V> {
 
     MyLinkedList<K> myLinkedList;
 
