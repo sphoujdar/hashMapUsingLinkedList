@@ -35,4 +35,9 @@ public class MyNode<K extends Comparable<K>> implements INode<K>{
     public int compareTo(INode<K> nodeToCompare) {
                 return this.key.compareTo(nodeToCompare.getKey());
     }
+
+    @Override
+    public String toString() {
+        return "[" + this.key.toString() + "]";
+    }
 }

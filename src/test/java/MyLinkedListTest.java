@@ -22,6 +22,27 @@ public class MyLinkedListTest {
     }
 
     @Test
+    public void Given3Nodes_AppendThemToTheLinkedList_AndCheckThatTheyAreAddedInCorrectOrder(){
+        MyLinkedList<Integer> myLinkedList = new MyLinkedList<>();
+        MyNode<Integer> firstNode = new MyNode<>();
+        MyNode<Integer> secondNode = new MyNode<>();
+        MyNode<Integer> thirdNode = new MyNode<>();
+        firstNode.setKey(56);
+        secondNode.setKey(30);
+        thirdNode.setKey(70);
+        myLinkedList.append(firstNode);
+        myLinkedList.append(secondNode);
+        myLinkedList.append(thirdNode);
+
+        System.out.println(myLinkedList);
+
+        boolean testVariable = myLinkedList.getHead().getKey().equals(56)
+                && myLinkedList.getHead().getNext().getKey().equals(30)
+                && myLinkedList.getTail().getKey().equals(70);
+        Assert.assertTrue(testVariable);
+    }
+
+    @Test
     public void given2Nodes_AppendThirdNodeInTheMiddleOfLinkedList_AndCheckThatTheyAreAddedInCorrectOrder(){
         MyLinkedList<Integer> myLinkedList = new MyLinkedList<>();
         MyNode<Integer> firstNode = new MyNode<>();
@@ -97,7 +118,8 @@ public class MyLinkedListTest {
         myLinkedList.append(fourthNode);
         myLinkedList.append(fifthNode);
 
-        boolean testVariable = myLinkedList.searchNodeByKey(56) == 0
+        boolean testVariable = myLinkedList.searchNodeByKey(55) == null
+                               && myLinkedList.searchNodeByKey(56) == 0
                                && myLinkedList.searchNodeByKey(30) == 1
                                && myLinkedList.searchNodeByKey(70) == 2
                                && myLinkedList.searchNodeByKey(26) == 3
