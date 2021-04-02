@@ -27,4 +27,34 @@ public class MyHashMapTest{
                                notOccurrence.getValue() == 2;
         Assert.assertTrue(testVariable);
     }
+
+    @Test
+    public void givenASentence_AddEachWordAndNumberOfOccurrenceToHashMap_AndReturnTrueIfCorrectForAll(){
+        MyHashMap<String, Integer> keyValueHashMap = new MyHashMap<>();
+        String sentenceToEvaluate = "Paranoids are not " +
+                "paranoid because they are paranoid but " +
+                "because they keep putting themselves " +
+                "deliberately into paranoid avoidable " +
+                "situations";
+        String[] wordList = sentenceToEvaluate.split(" ");
+        for (String word : wordList) {
+            if (keyValueHashMap.get(word) == null){
+                keyValueHashMap.add(word , 1);
+            }else{
+                MyMapNode<String,Integer> currentWordNode =  keyValueHashMap.get(word);
+                Integer currentWordOccurrenceValue = currentWordNode.getValue();
+                currentWordOccurrenceValue += 1;
+                keyValueHashMap.add(word,currentWordOccurrenceValue);
+            }
+        }
+        MyMapNode<String ,Integer> intoOccurrence = keyValueHashMap.get("into");
+        MyMapNode<String ,Integer> paranoidOccurrence = keyValueHashMap.get("paranoid");
+        MyMapNode<String ,Integer> becauseOccurrence = keyValueHashMap.get("because");
+        MyMapNode<String ,Integer> themselvesOccurrence = keyValueHashMap.get("themselves");
+        boolean testVariable = intoOccurrence.getValue() == 1 &&
+                               paranoidOccurrence.getValue() == 3 &&
+                               becauseOccurrence.getValue() == 2 &&
+                               themselvesOccurrence.getValue() == 1;
+        Assert.assertTrue(testVariable);
+    }
 }
