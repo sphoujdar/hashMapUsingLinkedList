@@ -21,6 +21,7 @@ public class MyBinaryTreeTest {
         Assert.assertTrue(testVariable);
     }
 
+    @Test
     public void given13Nodes_AddThemInBinarySearchTree_ReturnTrueIfTheyAreAddedInOrder(){
         MyBinarySearchTree<Integer> myBinarySearchTree = new MyBinarySearchTree<>();
         MyBinaryNode<Integer> Node1 = new MyBinaryNode<>();
